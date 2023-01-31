@@ -15,4 +15,18 @@ class Todo extends BaseController
         ];
         return view('todo/index', $data);
     }
+
+    public function getNew()
+    {
+        $todoModel = new \App\Models\Todo();
+        $data      = [
+            'row' => $todoModel,
+        ];
+        return view('todo/form', $data);
+    }
+
+    public function postCreate()
+    {
+
+    }
 }
