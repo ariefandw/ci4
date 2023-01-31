@@ -6,7 +6,7 @@ class Site extends BaseController
 {
     public function getIndex()
     {
-        return 'Selamat datang';
+        return view('site/index');
     }
     public function getHitung($a, $b = 0)
     {
