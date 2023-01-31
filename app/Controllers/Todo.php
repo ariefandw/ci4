@@ -21,12 +21,17 @@ class Todo extends BaseController
         $todoModel = new \App\Models\Todo();
         $data      = [
             'row' => $todoModel,
+            'action' => 'create',
         ];
         return view('todo/form', $data);
     }
 
     public function postCreate()
     {
-
+        $data      = $this->request->getPost();
+        $todoModel = new \App\Models\Todo();
+        $todoModel->insert($data);
+        session()->setFlashdata('success', 'Data berhasil disimpan');
+        $this->response->redirect(site_url('todo'));
     }
 }

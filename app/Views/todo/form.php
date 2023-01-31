@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 <h2>Input Todo</h2>
-<form method="post" action="<?= site_url('todo/create'); ?>">
+<form method="post" action="<?= site_url('todo/' . $action); ?>">
     <div class="mb-3">
         <label class="form-label">Judul</label>
         <input type="text" class="form-control" name="judul" value="<?= $row->judul; ?>">

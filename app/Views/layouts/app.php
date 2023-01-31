@@ -57,6 +57,12 @@
     </nav>
 
     <div class="container-fluid">
+        <?php if (!empty(session()->getFlashdata('success'))): ?>
+            <div class="alert alert-success" role="alert">
+                <?= session()->getFlashdata('success'); ?>
+            </div>
+        <?php endif; ?>
+
         <?= $this->renderSection('content') ?>
     </div>
 
