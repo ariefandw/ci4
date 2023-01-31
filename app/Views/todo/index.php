@@ -2,6 +2,7 @@
 
 <?= $this->section('content') ?>
 <h1>Todo</h1>
+<a class="btn btn-success" href="<?= site_url('todo/new') ?>" role="button">Link</a>
 <table class="table">
     <tr>
         <th scope="col">Judul</th>
