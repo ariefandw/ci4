@@ -38,7 +38,10 @@
                 <form method="post" action="<?= site_url('todo/delete/' . $row->id); ?>"
                     onsubmit="return confirm('Apakah anda yakin?');">
                     <div class="btn-group btn-group-sm" role="group">
-                        <a href="<?= site_url('todo/edit/' . $row->id) ?>" class="btn btn-warning">
+                        <a href="<?= site_url('todo/pdf/' . $row->id) ?>" class="btn btn-info" target="__blank">
+                            cetak
+                        </a>
+                        <a href=" <?= site_url('todo/edit/' . $row->id) ?>" class="btn btn-warning">
                             edit
                         </a>
                         <button type="submit" class="btn btn-danger">hapus</button>

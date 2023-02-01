@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use Dompdf\Dompdf;
 
 class Todo extends BaseController
 {
@@ -60,5 +61,19 @@ class Todo extends BaseController
         $todoModel->delete($id);
         session()->setFlashdata('success', 'Data berhasil dihapus');
         $this->response->redirect(site_url('todo'));
+    }
+
+    public function getPdf($id)
+    {
+        $fileName  = 'todo_' . date('YmdHis') . '.pdf';
+        $todoModel = new \App\Models\Todo();
+        $data      = [
+            'row' => $todoModel->find($id),
+        ];
+        $dompdf    = new Dompdf();
+        $dompdf->loadHtml(view('todo/report', $data));
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+        $dompdf->stream($fileName, ['Attachment' => 0]);
     }
 }
