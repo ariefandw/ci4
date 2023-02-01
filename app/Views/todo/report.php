@@ -1,6 +1,7 @@
 <?= $this->extend('layouts/print') ?>
 
 <?= $this->section('content') ?>
+<img src="img/logo.png" style="width:50px;" />
 <h1>Todo</h1>
 <table>
     <tr>

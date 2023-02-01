@@ -71,8 +71,24 @@ class Todo extends BaseController
             'row' => $todoModel->find($id),
         ];
         $dompdf    = new Dompdf();
+        $dompdf->getOptions()->setChroot(FCPATH);
         $dompdf->loadHtml(view('todo/report', $data));
-        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream($fileName, ['Attachment' => 0]);
+    }
+
+    public function getPdfall()
+    {
+        $fileName  = 'todo_' . date('YmdHis') . '.pdf';
+        $todoModel = new \App\Models\Todo();
+        $data      = [
+            'rows' => $todoModel->findAll(),
+        ];
+        $dompdf    = new Dompdf();
+        $dompdf->getOptions()->setChroot(FCPATH);
+        $dompdf->loadHtml(view('todo/report-all', $data));
+        $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
         $dompdf->stream($fileName, ['Attachment' => 0]);
     }

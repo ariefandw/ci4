@@ -12,6 +12,7 @@
 <img id="logo-todo" src="<?= base_url('img/logo.png'); ?>" />
 <h1>Todo</h1>
 <a class="btn btn-success" href="<?= site_url('todo/new') ?>" role="button">Tambah</a>
+<a class="btn btn-info" href="<?= site_url('todo/pdfall'); ?>" role="button">Cetak</a>
 <table class="table">
     <tr>
         <th>Judul</th>
