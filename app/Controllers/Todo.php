@@ -34,4 +34,31 @@ class Todo extends BaseController
         session()->setFlashdata('success', 'Data berhasil disimpan');
         $this->response->redirect(site_url('todo'));
     }
+
+    public function getEdit($id)
+    {
+        $todoModel = new \App\Models\Todo();
+        $data      = [
+            'row' => $todoModel->find($id),
+            'action' => 'update',
+        ];
+        return view('todo/form', $data);
+    }
+
+    public function postUpdate($id)
+    {
+        $data      = $this->request->getPost();
+        $todoModel = new \App\Models\Todo();
+        $todoModel->update($id, $data);
+        session()->setFlashdata('success', 'Data berhasil disimpan');
+        $this->response->redirect(site_url('todo'));
+    }
+
+    public function postDelete($id)
+    {
+        $todoModel = new \App\Models\Todo();
+        $todoModel->delete($id);
+        session()->setFlashdata('success', 'Data berhasil dihapus');
+        $this->response->redirect(site_url('todo'));
+    }
 }
